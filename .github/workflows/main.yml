@@ -1,12 +1,12 @@
 name: "vitedeployment"
 on:
   push:
-    branch:
-      main
-permission:
+    branches:
+         main
+permissions:
     contents: read
     pages: write
-    token-id: write
+    id-token: write
 jobs:
     github-jobs:
       runs-on: ubuntu-latest
@@ -19,9 +19,9 @@ jobs:
               node-version: 18
               cache: npm
         - name: npm install
-          uses: npm i
+          run: npm i
         - name: npm build package
-          uses: npm run build
+          run: npm run build
         - name: Upload a Build Artifact
           uses: actions/upload-artifact@v3.1.2
           with:
